@@ -1,30 +1,37 @@
+package KompProg;
+
 import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
 import java.util.*;
-import java.util.concurrent.*;
-import java.util.regex.*;
 
-public class Solution {
-
-	/* Маруся играет в баскетбол и хочет стать профессионалом. Каждый сезон 
-	* она ведет записи своих игр. Она подсчитывает, сколько раз она 
-	* побила свой рекорд очков и сколько раз ухудшила результат. Помочь Марусе. 
-	* n - количество игр за сезон.
+    /* РњР°СЂСѓСЃСЏ РёРіСЂР°РµС‚ РІ Р±Р°СЃРєРµС‚Р±РѕР» Рё С…РѕС‡РµС‚ СЃС‚Р°С‚СЊ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»РѕРј. РљР°Р¶РґС‹Р№ СЃРµР·РѕРЅ
+	* РѕРЅР° РІРµРґРµС‚ Р·Р°РїРёСЃРё СЃРІРѕРёС… РёРіСЂ. РћРЅР° РїРѕРґСЃС‡РёС‚С‹РІР°РµС‚, СЃРєРѕР»СЊРєРѕ СЂР°Р· РѕРЅР°
+	* РїРѕР±РёР»Р° СЃРІРѕР№ СЂРµРєРѕСЂРґ РѕС‡РєРѕРІ Рё СЃРєРѕР»СЊРєРѕ СЂР°Р· СѓС…СѓРґС€РёР»Р° СЂРµР·СѓР»СЊС‚Р°С‚. РџРѕРјРѕС‡СЊ РњР°СЂСѓСЃРµ.
+	* n - РєРѕР»РёС‡РµСЃС‚РІРѕ РёРіСЂ Р·Р° СЃРµР·РѕРЅ.
 	* 1 <= n <= 1000
 	* 0 <= scores[i] <= 10e8
 	*
-	* Пример: 9
+	* РџСЂРёРјРµСЂ: 9
 	*         10 5 20 20 4 5 2 25 1
-	* Ответ: 2 4
+	* РћС‚РІРµС‚: 2 4
 	*/
 
-
+public class Solution_stat {
     // Complete the breakingRecords function below.
     static int[] breakingRecords(int[] scores) {
-
-
+        int record = scores[0];
+        int loseResult = 0;
+        int breakingRecord = 0;
+        for (int i = 0; i < scores.length - 1; i++){
+            if (scores[i] > scores[i + 1]){
+                loseResult++;
+            }
+            if (scores[i] > record){
+                breakingRecord++;
+                record = scores[i];
+            }
+        }
+        int[] result = {breakingRecord, loseResult};
+        return result;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
